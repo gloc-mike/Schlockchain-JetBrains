@@ -1,52 +1,109 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+# Setup for "autodoc" in MyST powered website
+import os
+import sys
 
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath("."))
+# End "autodoc" setup.
+# Also for "rinohtype"
+sys.path.insert(0, os.path.abspath("../.."))
+sys.setrecursionlimit(1500)
 
 
-# -- Project information -----------------------------------------------------
+project = "My Amazing Site"
+# This one shows up int the browser tab
+html_title = "LOL, It Is A Nice Site"
+copyright = "2022, Michael B <gloc.mike@hey.com>"
+author = "Michael B <gloc.mike@hey.com>"
+language = "en"
 
-project = 'Schlockchain'
-copyright = '2022, Michael B <gloc.mike@hey.com>'
-author = 'Michael B <gloc.mike@hey.com>'
-
-
-# -- General configuration ---------------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
+    "myst_parser",
+    # Setup for "autodoc" in MyST powered website
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx_autodoc_typehints",
+    "ablog",
+    "sphinx.ext.intersphinx",
+    "sphinx_ext_substitution",
+    "rinoh.frontend.sphinx",
+]
+myst_update_mathjax = False
+
+# latex_elements = {
+#     "papersize" : "letterpaper",
+#     "pointsize" : "10pt",
+#     "preamble" : "",
+#     "figure_align" : "htbp"
+# }
+
+exclude_patterns = [
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
+    "posts/*/.ipynb_checkpoints/*",
+    ".github/*",
+    ".history",
+    "github_submodule/*",
+    "LICENSE.md",
+    "README.md",
 ]
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+html_theme = "alabaster"
+# html_theme = "sphinx_book_theme"
+# html_theme_options = {
+#     "rightsidebar": "true",
+#     "relbarbgcolor": "black"
+# }
+html_static_path = ["_static"]
+html_css_files = [
+    "custom.css",
+    "css/custom_style_autodoc.css",
+    "css/custom_style_code_blocks.css",
+    "css/asciinema-player.css",
+]
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+# pygments_style = 'monokai'
 
+# For asciimena javascript??
+html_js_files = [
+    "js/asciinema-player.js",
+]
+html_logo = "_static/logo/archer_small_405.png"
 
-# -- Options for HTML output -------------------------------------------------
+templates_path = ["_templates"]
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
+# html_sidebars = {
+#     "**": ["sbt-sidebar-nav.html", "sbt-sidebar-footer.html"]
+# }
+html_sidebars = {
+    "**": [
+        "about.html",
+        "navigation.html",
+        "relations.html",
+        "luv_sphinx.html",
+        "searchbox.html",
+        "donate.html",
+    ]
+}
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# MyST Config Settings
+myst_enable_extensions = [
+    "colon_fence",
+    "substitution",
+]
+
+# Auto-generated header anchors
+# Ref: https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-header-anchors
+myst_heading_anchors = 2
+
+# Intersphinz settings
+intersphinx_mapping = {
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
+myst_url_schemes = [
+    "http",
+    "https",
+]
+
+# Global substitutions
+myst_substitutions = {"snippet": "I'm a **substitution**"}

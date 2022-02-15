@@ -6,6 +6,12 @@ name = "pypi"
 [packages]
 sphinx = "*"
 livereload = "*"
+myst-parser = "*"
+sphinx-autodoc-typehints = "*"
+sphinx-book-theme = "*"
+sphinx-ext-substitution = "*"
+rinohtype = "*"
+ablog = "*"
 
 [dev-packages]
 
