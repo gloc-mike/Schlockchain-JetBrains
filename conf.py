@@ -38,6 +38,7 @@ myst_update_mathjax = False
 
 exclude_patterns = [
     "_build",
+    "_publish",
     "Thumbs.db",
     ".DS_Store",
     "posts/*/.ipynb_checkpoints/*",
