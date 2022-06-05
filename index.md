@@ -6,7 +6,7 @@ Welcome to the future.
 :maxdepth: 2
 :caption: "Table of Contents:"
 
-first_post
+posts/first_post
 api
 first
 second

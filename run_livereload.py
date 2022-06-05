@@ -5,6 +5,7 @@ if __name__ == "__main__":
     server.watch("*.rst", shell("make html"), delay=1)
     server.watch("*.md", shell("make html"), delay=1)
     server.watch("*.py", shell("make html"), delay=1)
+    server.watch("posts/*", shell("make html"), delay=1)
     server.watch("_static/*", shell("make html"), delay=1)
     server.watch("_templates/*", shell("make html"), delay=1)
     server.serve(root="_publish/html")

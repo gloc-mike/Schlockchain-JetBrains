@@ -38,10 +38,10 @@ myst_update_mathjax = False
 
 exclude_patterns = [
     "_build",
+    "_public",
     "_publish",
     "Thumbs.db",
     ".DS_Store",
-    "posts/*/.ipynb_checkpoints/*",
     ".github/*",
     ".history",
     "github_submodule/*",
@@ -69,6 +69,10 @@ html_css_files = [
 html_js_files = [
     "js/asciinema-player.js",
 ]
+
+html_extra_path = [
+]
+
 html_logo = "_static/logo/archer_small_405.png"
 
 templates_path = ["_templates"]
@@ -108,3 +112,6 @@ myst_url_schemes = [
 
 # Global substitutions
 myst_substitutions = {"snippet": "I'm a **substitution**"}
+
+# ABlog
+blog_post_pattern = ["posts/*.rst", "posts/*.md"]
